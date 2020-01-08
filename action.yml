@@ -1,0 +1,21 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: 'UPX Action'
+description: 'GitHub Action for UPX, the Ultimate Packer for eXecutables'
+author: 'crazy-max'
+branding:
+  color: 'yellow'
+  icon: 'trending-down'
+
+inputs:
+  version:
+    description: 'UPX version. Example: 3.95'
+    default: 'latest'
+  file:
+    description: 'File to compress'
+    required: true
+  args:
+    description: 'Arguments to pass to UPX'
+
+runs:
+  using: 'node12'
+  main: 'lib/main.js'

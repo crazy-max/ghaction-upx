@@ -1,0 +1,44 @@
+{
+  "name": "upx-github-action",
+  "description": "GitHub Action for UPX, the Ultimate Packer for eXecutables",
+  "main": "lib/main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "format": "prettier --write **/*.ts",
+    "prune": "npm prune --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazy-max/ghaction-upx.git"
+  },
+  "keywords": [
+    "actions",
+    "upx"
+  ],
+  "author": "CrazyMax",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.1.1",
+    "@actions/exec": "^1.0.1",
+    "decompress": "^4.2.0",
+    "decompress-tarxz": "^3.0.0",
+    "download": "^7.1.0",
+    "typed-rest-client": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.4",
+    "@types/decompress": "^4.2.3",
+    "@types/download": "^6.2.4",
+    "jest": "^24.8.0",
+    "jest-circus": "^24.7.1",
+    "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1",
+    "typescript-formatter": "^7.2.2"
+  }
+}
