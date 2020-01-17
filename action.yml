@@ -1,5 +1,5 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
-name: 'UPX Action'
+name: 'UPX GitHub Action'
 description: 'GitHub Action for UPX, the Ultimate Packer for eXecutables'
 author: 'crazy-max'
 branding:
