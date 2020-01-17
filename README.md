@@ -26,10 +26,10 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
       -
         name: Run UPX
-        uses: crazy-max/ghaction-upx@master
+        uses: crazy-max/ghaction-upx@v1
         with:
           version: latest
           file: ./bin/mybinary
