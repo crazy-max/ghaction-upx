@@ -1,0 +1,53 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - master
+      - releases/*
+  push:
+    branches:
+      - master
+      - releases/*
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        include:
+          - os: ubuntu-latest
+            version: latest
+            file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-linux-amd64
+          - os: windows-latest
+            version: latest
+            file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-windows-4.0-amd64.exe
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v1
+      -
+        name: Download file
+        id: download
+        run: |
+          mkdir ./bin
+          if [ "${{ matrix.os }}" == "windows-latest" ]; then
+            curl -sSLk ${{ matrix.file }} -o ./bin/firefox-history-merger.exe
+            echo ::set-output name=filename::./bin/firefox-history-merger.exe
+          else
+            curl -sSLk ${{ matrix.file }} -o ./bin/firefox-history-merger
+            chmod +x ./bin/firefox-history-merger
+            echo ::set-output name=filename::./bin/firefox-history-merger
+          fi
+        shell: bash
+      -
+        name: UPX
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          file: ${{ steps.download.outputs.filename }}
+          args: -fq
