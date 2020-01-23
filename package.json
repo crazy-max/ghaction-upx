@@ -26,7 +26,6 @@
     "@actions/exec": "^1.0.3",
     "@actions/tool-cache": "^1.3.0",
     "download": "^7.1.0",
-    "jest-runtime": "^25.1.0",
     "typed-rest-client": "^1.7.1"
   },
   "devDependencies": {
@@ -35,6 +34,7 @@
     "@types/download": "^6.2.4",
     "jest": "^24.8.0",
     "jest-circus": "^24.7.1",
+    "jest-runtime": "^25.1.0",
     "prettier": "^1.17.1",
     "ts-jest": "^24.3.0",
     "typescript": "^3.5.1",
