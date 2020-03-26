@@ -33,7 +33,7 @@
     "@types/node": "^13.9.4",
     "@types/download": "^6.2.4",
     "jest": "^25.2.0",
-    "jest-circus": "^25.1.0",
+    "jest-circus": "^25.2.1",
     "jest-runtime": "^25.1.0",
     "prettier": "^2.0.2",
     "ts-jest": "^25.2.1",
