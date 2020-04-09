@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - master
-      - releases/*
   push:
     branches:
       - master
-      - releases/*
 
 jobs:
   test:
@@ -24,6 +22,11 @@ jobs:
         # https://github.com/actions/checkout
         name: Checkout
         uses: actions/checkout@v1
+      -
+        name: Build
+        run: |
+          npm install
+          npm run build
       -
         name: Install
         run: npm ci
