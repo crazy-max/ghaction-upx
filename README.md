@@ -10,8 +10,6 @@ GitHub Action for [UPX](https://github.com/upx/upx), the Ultimate Packer for eXe
 
 ## Usage
 
-Below is a simple snippet to use this action. A [live example](https://github.com/crazy-max/ghaction-upx/actions) is also available for this repository.
-
 ```yaml
 name: upx
 
