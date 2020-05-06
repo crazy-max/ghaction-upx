@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0 (2020/05/06)
+
+* Add Codecov
+* Update deps
+
 ## 1.2.0 (2020/04/09)
 
 * Use ncc and clean workflows
