@@ -1,9 +1,7 @@
-import * as download from 'download';
-import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import * as util from 'util';
-import * as restm from 'typed-rest-client/RestClient';
+import * as github from './github';
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 
@@ -11,36 +9,37 @@ let osPlat: string = os.platform();
 let osArch: string = os.arch();
 
 export async function getUPX(version: string): Promise<string> {
-  const selected = await determineVersion(version);
-  if (selected) {
-    version = selected;
+  const release: github.GitHubRelease | null = await github.getRelease(version);
+  if (!release) {
+    throw new Error(`Cannot find UPX ${version} release`);
   }
 
-  core.info(`✅ UPX version found: ${version}`);
-  const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-'));
-  const fileName = getFileName(version);
-  const downloadUrl = util.format('https://github.com/upx/upx/releases/download/v%s/%s', version, fileName);
+  const semver: string = release.tag_name.replace(/^v/, '');
+  core.debug(`Semver is ${semver}`);
+
+  core.info(`✅ UPX version found: ${semver}`);
+  const filename = util.format('%s.%s', getName(semver), osPlat == 'win32' ? 'zip' : 'tar.xz');
+  const downloadUrl = util.format('https://github.com/upx/upx/releases/download/v%s/%s', semver, filename);
 
   core.info(`⬇️ Downloading ${downloadUrl}...`);
-  await download.default(downloadUrl, tmpdir, {filename: fileName});
+  const downloadPath: string = await tc.downloadTool(downloadUrl);
+  core.debug(`Downloaded to ${downloadPath}`);
 
   core.info('📦 Extracting UPX...');
-  let extPath: string = tmpdir;
-  if (osPlat == 'win32') {
-    extPath = await tc.extractZip(`${tmpdir}/${fileName}`);
-  } else {
-    extPath = await tc.extractTar(`${tmpdir}/${fileName}`, undefined, 'x');
-  }
+  const extPath: string =
+    osPlat == 'win32' ? await tc.extractZip(downloadPath) : await tc.extractTar(downloadPath, undefined, 'x');
+  core.debug(`Extracted to ${extPath}`);
 
-  return path.join(extPath, getFileNameWithoutExt(version), osPlat == 'win32' ? 'upx.exe' : 'upx');
+  const cachePath: string = await tc.cacheDir(extPath, 'ghaction-upx', version);
+  core.debug(`Cached to ${cachePath}`);
+
+  const exePath: string = path.join(cachePath, getName(semver), osPlat == 'win32' ? 'upx.exe' : 'upx');
+  core.debug(`Exe path is ${exePath}`);
+
+  return exePath;
 }
 
-function getFileName(version: string): string {
-  const ext: string = osPlat == 'win32' ? 'zip' : 'tar.xz';
-  return util.format('%s.%s', getFileNameWithoutExt(version), ext);
-}
-
-function getFileNameWithoutExt(version: string): string {
+function getName(version: string): string {
   let platform: string = '';
   if (osPlat == 'win32') {
     platform = osArch == 'x64' ? 'win64' : 'win32';
@@ -48,27 +47,4 @@ function getFileNameWithoutExt(version: string): string {
     platform = osArch == 'x64' ? 'amd64_linux' : 'i386_linux';
   }
   return util.format('upx-%s-%s', version, platform);
-}
-
-interface GitHubRelease {
-  tag_name: string;
-}
-
-async function determineVersion(version: string): Promise<string> {
-  let rest: restm.RestClient = new restm.RestClient('ghaction-upx', 'https://github.com', undefined, {
-    headers: {
-      Accept: 'application/json'
-    }
-  });
-
-  if (version !== 'latest') {
-    version = `v${version}`;
-  }
-
-  let res: restm.IRestResponse<GitHubRelease> = await rest.get<GitHubRelease>(`/upx/upx/releases/${version}`);
-  if (res.statusCode != 200 || res.result === null) {
-    throw new Error(`Cannot find UPX ${version} release (http ${res.statusCode})`);
-  }
-
-  return res.result.tag_name.replace(/^v/, '');
 }
