@@ -3392,7 +3392,7 @@ function run(silent) {
 }
 exports.run = run;
 run();
-
+//# sourceMappingURL=main.js.map
 
 /***/ }),
 
@@ -20033,7 +20033,7 @@ function determineVersion(version) {
         return res.result.tag_name.replace(/^v/, '');
     });
 }
-
+//# sourceMappingURL=installer.js.map
 
 /***/ }),
 
