@@ -2,6 +2,7 @@
 
 ## 1.3.0 (2020/05/06)
 
+* Use native tools
 * Add Codecov
 * Update deps
 
