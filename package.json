@@ -2,12 +2,9 @@
   "name": "upx-github-action",
   "description": "GitHub Action for UPX, the Ultimate Packer for eXecutables",
   "main": "lib/main.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "build": "tsc && ncc build",
-    "test": "jest",
+    "test": "jest --coverage",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "pre-checkin": "npm run format && npm run build"
