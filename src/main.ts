@@ -4,7 +4,7 @@ import * as installer from './installer';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 
-export async function run() {
+async function run(): Promise<void> {
   try {
     if (os.platform() == 'darwin') {
       core.setFailed('Not supported on darwin platform');

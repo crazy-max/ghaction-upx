@@ -5,17 +5,15 @@ import * as github from './github';
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 
-let osPlat: string = os.platform();
-let osArch: string = os.arch();
+const osPlat: string = os.platform();
+const osArch: string = os.arch();
 
 export async function getUPX(version: string): Promise<string> {
   const release: github.GitHubRelease | null = await github.getRelease(version);
   if (!release) {
     throw new Error(`Cannot find UPX ${version} release`);
   }
-
   const semver: string = release.tag_name.replace(/^v/, '');
-  core.debug(`Semver is ${semver}`);
 
   core.info(`✅ UPX version found: ${semver}`);
   const filename = util.format('%s.%s', getName(semver), osPlat == 'win32' ? 'zip' : 'tar.xz');
@@ -26,11 +24,15 @@ export async function getUPX(version: string): Promise<string> {
   core.debug(`Downloaded to ${downloadPath}`);
 
   core.info('📦 Extracting UPX...');
-  const extPath: string =
-    osPlat == 'win32' ? await tc.extractZip(downloadPath) : await tc.extractTar(downloadPath, undefined, 'x');
+  let extPath: string;
+  if (osPlat == 'win32') {
+    extPath = await tc.extractZip(downloadPath);
+  } else {
+    extPath = await tc.extractTar(downloadPath, undefined, 'x');
+  }
   core.debug(`Extracted to ${extPath}`);
 
-  const cachePath: string = await tc.cacheDir(extPath, 'ghaction-upx', version);
+  const cachePath: string = await tc.cacheDir(extPath, 'ghaction-upx', semver);
   core.debug(`Cached to ${cachePath}`);
 
   const exePath: string = path.join(cachePath, getName(semver), osPlat == 'win32' ? 'upx.exe' : 'upx');

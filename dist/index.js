@@ -1305,7 +1305,6 @@ function run() {
         }
     });
 }
-exports.run = run;
 run();
 //# sourceMappingURL=main.js.map
 
@@ -4620,8 +4619,8 @@ const util = __importStar(__webpack_require__(669));
 const github = __importStar(__webpack_require__(824));
 const core = __importStar(__webpack_require__(470));
 const tc = __importStar(__webpack_require__(533));
-let osPlat = os.platform();
-let osArch = os.arch();
+const osPlat = os.platform();
+const osArch = os.arch();
 function getUPX(version) {
     return __awaiter(this, void 0, void 0, function* () {
         const release = yield github.getRelease(version);
@@ -4629,7 +4628,6 @@ function getUPX(version) {
             throw new Error(`Cannot find UPX ${version} release`);
         }
         const semver = release.tag_name.replace(/^v/, '');
-        core.debug(`Semver is ${semver}`);
         core.info(`✅ UPX version found: ${semver}`);
         const filename = util.format('%s.%s', getName(semver), osPlat == 'win32' ? 'zip' : 'tar.xz');
         const downloadUrl = util.format('https://github.com/upx/upx/releases/download/v%s/%s', semver, filename);
@@ -4637,9 +4635,15 @@ function getUPX(version) {
         const downloadPath = yield tc.downloadTool(downloadUrl);
         core.debug(`Downloaded to ${downloadPath}`);
         core.info('📦 Extracting UPX...');
-        const extPath = osPlat == 'win32' ? yield tc.extractZip(downloadPath) : yield tc.extractTar(downloadPath, undefined, 'x');
+        let extPath;
+        if (osPlat == 'win32') {
+            extPath = yield tc.extractZip(downloadPath);
+        }
+        else {
+            extPath = yield tc.extractTar(downloadPath, undefined, 'x');
+        }
         core.debug(`Extracted to ${extPath}`);
-        const cachePath = yield tc.cacheDir(extPath, 'ghaction-upx', version);
+        const cachePath = yield tc.cacheDir(extPath, 'ghaction-upx', semver);
         core.debug(`Cached to ${cachePath}`);
         const exePath = path.join(cachePath, getName(semver), osPlat == 'win32' ? 'upx.exe' : 'upx');
         core.debug(`Exe path is ${exePath}`);
