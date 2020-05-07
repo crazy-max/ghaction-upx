@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 (2020/05/07)
+
+* Code cleanup
+
 ## 1.3.0 (2020/05/06)
 
 * Use native tools
