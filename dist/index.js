@@ -4696,7 +4696,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const httpm = __importStar(__webpack_require__(539));
 exports.getRelease = (version) => __awaiter(void 0, void 0, void 0, function* () {
-    const url = `https://github.com/upx/upx/releases/${version !== 'latest' ? `v${version}` : version}`;
+    const url = `https://github.com/upx/upx/releases/${version}`;
     const http = new httpm.HttpClient('ghaction-upx');
     return (yield http.getJson(url)).result;
 });
