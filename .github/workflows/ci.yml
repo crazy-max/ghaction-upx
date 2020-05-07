@@ -17,12 +17,13 @@ jobs:
         os:
           - ubuntu-latest
           - windows-latest
+        version:
+          - latest
+          - v3.95
         include:
           - os: ubuntu-latest
-            version: latest
             file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-linux-amd64
           - os: windows-latest
-            version: latest
             file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-windows-4.0-amd64.exe
     steps:
       -
