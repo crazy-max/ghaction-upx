@@ -40,11 +40,11 @@ jobs:
 
 Following inputs can be used as `step.with` keys
 
-| Name          | Type    | Default   | Description                   |
-|---------------|---------|-----------|-------------------------------|
-| `version`     | String  | `latest`  | UPX version. Example: `v3.95` |
-| `file`        | String  |           | File to compress              |
-| `args`        | String  |           | Arguments to pass to UPX      |
+| Name          | Type    | Default   | Description                     |
+|---------------|---------|-----------|---------------------------------|
+| `version`     | String  | `latest`  | UPX version. Example: `v3.95`   |
+| `file`        | String  |           | File to compress (**required**) |
+| `args`        | String  |           | Arguments to pass to UPX        |
 
 ## Limitation
 
