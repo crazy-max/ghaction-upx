@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2 (2020/05/11)
+
+* Update README
+
 ## 1.3.1 (2020/05/07)
 
 * Code cleanup
