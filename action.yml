@@ -10,11 +10,13 @@ inputs:
   version:
     description: 'UPX version. Example: 3.95'
     default: 'latest'
+    required: false
   file:
     description: 'File to compress'
     required: true
   args:
     description: 'Arguments to pass to UPX'
+    required: false
 
 runs:
   using: 'node12'
