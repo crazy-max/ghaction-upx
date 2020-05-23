@@ -1,12 +1,15 @@
 name: test
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
+      - releases/v*
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
 
 jobs:
   test:
