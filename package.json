@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/jest": "^25.2.3",
     "@types/node": "^13.13.5",
-    "@zeit/ncc": "^0.22.2",
+    "@zeit/ncc": "^0.22.3",
     "jest": "^25.5.4",
     "jest-circus": "^25.5.4",
     "jest-runtime": "^25.5.4",
