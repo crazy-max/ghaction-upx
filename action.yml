@@ -11,11 +11,15 @@ inputs:
     description: 'UPX version. Example: 3.95'
     default: 'latest'
     required: false
-  file:
-    description: 'File to compress'
-    required: true
+  files:
+    description: 'Newline-delimited list of path globs for files to compress'
+    required: false
   args:
     description: 'Arguments to pass to UPX'
+    required: false
+  file:
+    deprecationMessage: 'file is deprecated. Please use files input instead.'
+    description: 'File to compress'
     required: false
 
 runs:

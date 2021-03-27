@@ -28,33 +28,28 @@ jobs:
         version:
           - latest
           - v3.95
-        include:
-          - os: ubuntu-latest
-            file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-linux-amd64
-          - os: windows-latest
-            file: https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-windows-4.0-amd64.exe
     steps:
       -
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Download file
-        id: download
+        name: Download files
+        shell: bash
         run: |
           mkdir ./bin
-          if [ "${{ matrix.os }}" == "windows-latest" ]; then
-            curl -sSLk ${{ matrix.file }} -o ./bin/firefox-history-merger.exe
-            echo ::set-output name=filename::./bin/firefox-history-merger.exe
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            curl -sSLk https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-windows-4.0-386.exe -o ./bin/firefox-history-merger-windows-4.0-386.exe
+            curl -sSLk https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-windows-4.0-amd64.exe -o ./bin/firefox-history-merger-windows-4.0-amd64.exe
           else
-            curl -sSLk ${{ matrix.file }} -o ./bin/firefox-history-merger
-            chmod +x ./bin/firefox-history-merger
-            echo ::set-output name=filename::./bin/firefox-history-merger
+            curl -sSLk https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-linux-386 -o ./bin/firefox-history-merger-linux-386
+            curl -sSLk https://github.com/crazy-max/firefox-history-merger/releases/download/2.4.0/firefox-history-merger-linux-amd64 -o ./bin/firefox-history-merger-linux-amd64
           fi
-        shell: bash
+          chmod +x ./bin/firefox-history-merger*
       -
         name: UPX
         uses: ./
         with:
           version: ${{ matrix.version }}
-          file: ${{ steps.download.outputs.filename }}
+          files: |
+            ./bin/firefox-history-merger*
           args: -fq
