@@ -1,5 +1,5 @@
-import * as fs from 'fs';
 import * as os from 'os';
+import * as context from './context';
 import * as installer from './installer';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
@@ -11,19 +11,20 @@ async function run(): Promise<void> {
       return;
     }
 
-    const version = core.getInput('version') || 'latest';
-    const file = core.getInput('file', {required: true});
-    const args = core.getInput('args');
+    const inputs: context.Inputs = await context.getInputs();
+    const upx = await installer.getUPX(inputs.version);
 
-    if (!fs.existsSync(file)) {
-      core.setFailed(`File to compress not found: ${file}`);
+    const files: string[] = await context.resolvePaths(inputs.files);
+    if (files.length == 0) {
+      core.warning(`No files were found. Please check the 'files' input.`);
       return;
     }
 
-    const upx = await installer.getUPX(version);
-
-    core.info('🏃 Running UPX...');
-    await exec.exec(`${upx} ${args} ${file}`);
+    await context.asyncForEach(files, async filepath => {
+      core.startGroup(`Compressing ${filepath}...`);
+      await exec.exec(`${upx} ${inputs.args} ${filepath}`);
+      core.endGroup();
+    });
   } catch (error) {
     core.setFailed(error.message);
   }
