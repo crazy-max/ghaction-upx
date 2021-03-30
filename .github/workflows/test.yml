@@ -5,24 +5,18 @@ on:
     branches:
       - 'master'
       - 'releases/v*'
-    paths-ignore:
-      - '**.md'
   pull_request:
     branches:
       - 'master'
       - 'releases/v*'
-    paths-ignore:
-      - '**.md'
 
 jobs:
-  test-containerized:
+  test:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       -
         name: Validate
         uses: docker/bake-action@v1
@@ -33,28 +27,8 @@ jobs:
         uses: docker/bake-action@v1
         with:
           targets: test
-
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Install
-        run: yarn install
-      -
-        name: Test
-        run: yarn run test
       -
         name: Upload coverage
         uses: codecov/codecov-action@v1
-        if: success()
         with:
           file: ./coverage/clover.xml
