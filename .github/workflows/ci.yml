@@ -7,14 +7,12 @@ on:
     branches:
       - 'master'
       - 'releases/v*'
-    paths-ignore:
-      - '**.md'
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - 'master'
       - 'releases/v*'
-    paths-ignore:
-      - '**.md'
 
 jobs:
   ci:
