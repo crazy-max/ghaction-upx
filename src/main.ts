@@ -14,7 +14,7 @@ async function run(): Promise<void> {
     const inputs: context.Inputs = await context.getInputs();
     const upx = await installer.getUPX(inputs.version);
 
-    const files: string[] = await context.resolvePaths(inputs.files);
+    const files: string[] = context.resolvePaths(inputs.files);
     if (files.length == 0) {
       core.warning(`No files were found. Please check the 'files' input.`);
       return;
