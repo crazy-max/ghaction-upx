@@ -45,7 +45,7 @@ export async function getUPX(version: string): Promise<string> {
 }
 
 function getName(version: string): string {
-  let platform: string = '';
+  let platform = '';
   if (osPlat == 'win32') {
     platform = osArch == 'x64' ? 'win64' : 'win32';
   } else if (osPlat == 'linux') {

@@ -1,51 +1,71 @@
-#syntax=docker/dockerfile:1.2
+# syntax=docker/dockerfile:1
 
-FROM node:12 AS deps
+ARG NODE_VERSION=12
+
+FROM node:${NODE_VERSION}-alpine AS base
+RUN apk add --no-cache cpio findutils git
 WORKDIR /src
-COPY package.json yarn.lock ./
-RUN --mount=type=cache,target=/src/node_modules \
-  yarn install
 
-FROM scratch AS update-yarn
-COPY --from=deps /src/yarn.lock /
+FROM base AS deps
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  yarn install && mkdir /vendor && cp yarn.lock /vendor
 
-FROM deps AS validate-yarn
-COPY .git .git
-RUN status=$(git status --porcelain -- yarn.lock); if [ -n "$status" ]; then echo $status; exit 1; fi
+FROM scratch AS vendor-update
+COPY --from=deps /vendor /
 
-FROM deps AS base
-COPY . .
+FROM deps AS vendor-validate
+RUN --mount=type=bind,target=.,rw <<EOT
+set -e
+git add -A
+cp -rf /vendor/* .
+if [ -n "$(git status --porcelain -- yarn.lock)" ]; then
+  echo >&2 'ERROR: Vendor result differs. Please vendor your package with "docker buildx bake vendor-update"'
+  git status --porcelain -- yarn.lock
+  exit 1
+fi
+EOT
 
-FROM base AS build
-RUN --mount=type=cache,target=/src/node_modules \
-  yarn build
+FROM deps AS build
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  yarn run build && mkdir /out && cp -Rf dist /out/
+
+FROM scratch AS build-update
+COPY --from=build /out /
+
+FROM build AS build-validate
+RUN --mount=type=bind,target=.,rw <<EOT
+set -e
+git add -A
+cp -rf /out/* .
+if [ -n "$(git status --porcelain -- dist)" ]; then
+  echo >&2 'ERROR: Build result differs. Please build first with "docker buildx bake build"'
+  git status --porcelain -- dist
+  exit 1
+fi
+EOT
+
+FROM deps AS format
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  yarn run format \
+  && mkdir /out && find . -name '*.ts' -not -path './node_modules/*' | cpio -pdm /out
+
+FROM scratch AS format-update
+COPY --from=format /out /
+
+FROM deps AS lint
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  yarn run lint
 
 FROM deps AS test
 ENV RUNNER_TEMP=/tmp/github_runner
 ENV RUNNER_TOOL_CACHE=/tmp/github_tool_cache
-COPY . .
-RUN --mount=type=cache,target=/src/node_modules \
-  yarn run test
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  yarn run test --coverageDirectory=/tmp/coverage
 
 FROM scratch AS test-coverage
-COPY --from=test /src/coverage /coverage/
-
-FROM base AS run-format
-RUN --mount=type=cache,target=/src/node_modules \
-  yarn run format
-
-FROM scratch AS format
-COPY --from=run-format /src/src/*.ts /src/
-
-FROM base AS validate-format
-RUN --mount=type=cache,target=/src/node_modules \
-  yarn run format-check
-
-FROM scratch AS dist
-COPY --from=build /src/dist/ /dist/
-
-FROM build AS validate-build
-RUN status=$(git status --porcelain -- dist); if [ -n "$status" ]; then echo $status; exit 1; fi
-
-FROM base AS dev
-ENTRYPOINT ["bash"]
+COPY --from=test /tmp/coverage /
