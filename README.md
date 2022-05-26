@@ -9,6 +9,8 @@
 
 GitHub Action for [UPX](https://github.com/upx/upx), the Ultimate Packer for eXecutables.
 
+If you are interested, [check out](https://github.com/crazy-max?tab=repositories&q=ghaction&type=source&language=&sort=) my other :octocat: GitHub Actions!
+
 ![Screenshot](.github/ghaction-upx.png)
 
 ___
