@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.5.0 (2022/05/26)
+
+* Update dev dependencies and workflow (#168)
+* Bump @actions/core from 1.2.6 to 1.6.0 (#142 #158 #161)
+* Bump @actions/exec from 1.0.4 to 1.1.1 (#152 #164)
+* Bump @actions/tool-cache from 1.6.1 to 1.7.2 (#151 #165)
+* Bump minimist from 1.2.5 to 1.2.6 (#166)
+* Bump ansi-regex from 5.0.0 to 5.0.1 (#160)
+* Bump tmpl from 1.0.4 to 1.0.5 (#159)
+* Bump path-parse from 1.0.6 to 1.0.7 (#157)
+* Bump hosted-git-info from 2.8.8 to 2.8.9 (#154)
+* Bump ws from 7.3.0 to 7.5.0 (#155)
+* Bump lodash from 4.17.20 to 4.17.21 (#153)
+* Bump y18n from 4.0.0 to 4.0.3 (#143)
+
 ## 1.4.0 (2021/03/27)
 
 * Allow multiple files (#140)
