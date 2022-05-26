@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Run UPX
-        uses: crazy-max/ghaction-upx@v1
+        uses: crazy-max/ghaction-upx@v2
         with:
           version: latest
           files: |
