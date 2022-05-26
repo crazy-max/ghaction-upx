@@ -34,7 +34,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       -
         name: Run UPX
         uses: crazy-max/ghaction-upx@v2
