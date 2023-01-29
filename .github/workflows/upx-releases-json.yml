@@ -10,8 +10,12 @@ on:
     - cron: '0 10 * * 0'
   push:
     branches:
-      - master
+      - 'master'
+    paths-ignore:
+      - '.github/upx-releases.json'
   pull_request:
+    paths-ignore:
+      - '.github/upx-releases.json'
 
 jobs:
   generate:
