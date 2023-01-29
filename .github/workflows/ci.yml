@@ -9,10 +9,11 @@ on:
       - 'releases/v*'
     tags:
       - 'v*'
+    paths-ignore:
+      - '.github/upx-releases.json'
   pull_request:
-    branches:
-      - 'master'
-      - 'releases/v*'
+    paths-ignore:
+      - '.github/upx-releases.json'
 
 jobs:
   ci:
