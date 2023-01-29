@@ -11,8 +11,6 @@ on:
   push:
     branches:
       - 'master'
-    paths-ignore:
-      - '.github/upx-releases.json'
   pull_request:
     paths-ignore:
       - '.github/upx-releases.json'
