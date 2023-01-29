@@ -48,7 +48,7 @@ jobs:
         uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
         with:
           base: master
-          branch: upx-releases-json/${{ github.run_id }}
+          branch: bot/upx-releases-json
           commit-message: "update .github/upx-releases.json"
           signoff: true
           delete-branch: true
