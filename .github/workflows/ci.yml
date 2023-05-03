@@ -73,6 +73,6 @@ jobs:
           install-only: true
       -
         name: verify
-        run: >
+        run: |
           which upx
           upx --version
