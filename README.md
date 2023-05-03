@@ -45,18 +45,43 @@ jobs:
           args: -fq
 ```
 
+If you just want to install UPX:
+
+```yaml
+name: upx
+
+on:
+  push:
+
+jobs:
+  upx:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Install UPX
+        uses: crazy-max/ghaction-upx@v2
+        with:
+          install-only: true
+      -
+        name: UPX version
+        run: upx --version
+```
+
 ## Customizing
 
 ### inputs
 
 Following inputs can be used as `step.with` keys
 
-| Name          | Type    | Default   | Description                     |
-|---------------|---------|-----------|---------------------------------|
-| `version`       | String  | `latest`  | UPX version. Example: `v3.95`   |
-| `files`         | String  |           | Newline-delimited list of path globs for files to compress |
-| `args`          | String  |           | Arguments to pass to UPX        |
-| `install-only`  | String  | `false` | Install upx, but do not run it        |
+| Name           | Type   | Default  | Description                                                |
+|----------------|--------|----------|------------------------------------------------------------|
+| `version`      | String | `latest` | UPX version. Example: `v3.95`                              |
+| `files`        | String |          | Newline-delimited list of path globs for files to compress |
+| `args`         | String |          | Arguments to pass to UPX                                   |
+| `install-only` | String | `false`  | Just install UPX                                           |
 
 ## Limitation
 
