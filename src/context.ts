@@ -6,13 +6,15 @@ export interface Inputs {
   version: string;
   files: string[];
   args: string;
+  installOnly: boolean;
 }
 
 export async function getInputs(): Promise<Inputs> {
   return {
     version: core.getInput('version') || 'latest',
     files: getInputList(core.getInput('files') || core.getInput('file'), true),
-    args: core.getInput('args')
+    args: core.getInput('args'),
+    installOnly: core.getBooleanInput('install-only')
   };
 }
 

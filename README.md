@@ -53,9 +53,10 @@ Following inputs can be used as `step.with` keys
 
 | Name          | Type    | Default   | Description                     |
 |---------------|---------|-----------|---------------------------------|
-| `version`     | String  | `latest`  | UPX version. Example: `v3.95`   |
-| `files`       | String  |           | Newline-delimited list of path globs for files to compress (**required**) |
-| `args`        | String  |           | Arguments to pass to UPX        |
+| `version`       | String  | `latest`  | UPX version. Example: `v3.95`   |
+| `files`         | String  |           | Newline-delimited list of path globs for files to compress |
+| `args`          | String  |           | Arguments to pass to UPX        |
+| `install-only`  | String  | `false` | Install upx, but do not run it        |
 
 ## Limitation
 

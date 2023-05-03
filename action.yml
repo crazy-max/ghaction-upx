@@ -21,6 +21,11 @@ inputs:
     deprecationMessage: 'file is deprecated. Please use files input instead.'
     description: 'File to compress'
     required: false
+  install-only:
+    description: 'Just install upx'
+    default: 'false'
+    required: false
+
 
 runs:
   using: 'node16'
