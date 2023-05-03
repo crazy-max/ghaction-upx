@@ -1,4 +1,5 @@
 import * as os from 'os';
+import * as path from 'path';
 import * as context from './context';
 import * as installer from './installer';
 import * as core from '@actions/core';
@@ -13,6 +14,13 @@ async function run(): Promise<void> {
 
     const inputs: context.Inputs = await context.getInputs();
     const upx = await installer.getUPX(inputs.version);
+
+    if (inputs.installOnly) {
+      const dir = path.dirname(upx);
+      core.addPath(dir);
+      core.debug(`Added ${dir} to PATH`);
+      return;
+    }
 
     const files: string[] = context.resolvePaths(inputs.files);
     if (files.length == 0) {

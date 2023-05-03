@@ -50,3 +50,29 @@ jobs:
           files: |
             ./bin/firefox-history-merger*
           args: -fq
+  install-only:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        version:
+          - latest
+          - v4.0.2
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: UPX
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          install-only: true
+      -
+        name: verify
+        run: >
+          which upx
+          upx --version
