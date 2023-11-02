@@ -1,22 +1,42 @@
 {
   "latest": {
-    "id": 126740650,
-    "tag_name": "v4.2.0",
-    "html_url": "https://github.com/upx/upx/releases/tag/v4.2.0",
+    "id": 127511011,
+    "tag_name": "v4.2.1",
+    "html_url": "https://github.com/upx/upx/releases/tag/v4.2.1",
     "assets": [
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-amd64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-arm64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-arm_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-armeb_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-dos.zip",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-i386_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-mips_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-mipsel_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-powerpc64le_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-powerpc_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-src.tar.xz",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-win32.zip",
-      "https://github.com/upx/upx/releases/download/v4.2.0/upx-4.2.0-win64.zip"
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-amd64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-arm64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-arm_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-armeb_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-dos.zip",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-i386_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-mips_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-mipsel_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-powerpc64le_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-powerpc_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-src.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-win32.zip",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-win64.zip"
+    ]
+  },
+  "v4.2.1": {
+    "id": 127511011,
+    "tag_name": "v4.2.1",
+    "html_url": "https://github.com/upx/upx/releases/tag/v4.2.1",
+    "assets": [
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-amd64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-arm64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-arm_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-armeb_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-dos.zip",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-i386_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-mips_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-mipsel_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-powerpc64le_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-powerpc_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-src.tar.xz",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-win32.zip",
+      "https://github.com/upx/upx/releases/download/v4.2.1/upx-4.2.1-win64.zip"
     ]
   },
   "v4.2.0": {
