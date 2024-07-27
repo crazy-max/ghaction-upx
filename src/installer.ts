@@ -62,12 +62,23 @@ export async function getUPX(version: string): Promise<string> {
   return exePath;
 }
 
+function getLinuxPlatform(arch: string): string {
+  switch(arch) {
+    case 'x64':
+      return 'amd64_linux';
+    case 'arm64':
+      return 'arm64_linux';
+    default:
+      return 'i386_linux';
+  }
+}
+
 function getName(version: string): string {
   let platform = '';
   if (osPlat == 'win32') {
     platform = osArch == 'x64' ? 'win64' : 'win32';
   } else if (osPlat == 'linux') {
-    platform = osArch == 'x64' ? 'amd64_linux' : 'i386_linux';
+    platform = getLinuxPlatform(osArch);
   }
   return util.format('upx-%s-%s', version, platform);
 }
