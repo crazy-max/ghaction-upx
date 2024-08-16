@@ -31,12 +31,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@actions/http-client@npm:^2.0.1, @actions/http-client@npm:^2.1.1":
+"@actions/http-client@npm:^2.0.1":
   version: 2.1.1
   resolution: "@actions/http-client@npm:2.1.1"
   dependencies:
     tunnel: ^0.0.6
   checksum: 5a3fd0407020a11cd3864b6c9ed8ef36912e08418df34fac675d15fc71543abb419db236ddb8fbd649f8ad8b5057bd78f1ac301f87283dfc706aa85578a90658
+  languageName: node
+  linkType: hard
+
+"@actions/http-client@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@actions/http-client@npm:2.2.2"
+  dependencies:
+    tunnel: ^0.0.6
+    undici: ^5.25.4
+  checksum: 56c3d73f0f1650c88f810133c00762aa276fe908bd41619ce72b4b1c4cd4f8149eefb260214bafbbc41281118d0569efb7cee6da676c79b93a133dda7f445257
   languageName: node
   linkType: hard
 
@@ -828,6 +838,13 @@ __metadata:
   version: 8.49.0
   resolution: "@eslint/js@npm:8.49.0"
   checksum: a6601807c8aeeefe866926ad92ed98007c034a735af20ff709009e39ad1337474243d47908500a3bde04e37bfba16bcf1d3452417f962e1345bc8756edd6b830
+  languageName: node
+  linkType: hard
+
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "@fastify/busboy@npm:2.1.1"
+  checksum: 42c32ef75e906c9a4809c1e1930a5ca6d4ddc8d138e1a8c8ba5ea07f997db32210617d23b2e4a85fe376316a41a1a0439fc6ff2dedf5126d96f45a9d80754fb2
   languageName: node
   linkType: hard
 
@@ -5327,6 +5344,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici@npm:^5.25.4":
+  version: 5.28.4
+  resolution: "undici@npm:5.28.4"
+  dependencies:
+    "@fastify/busboy": ^2.0.0
+  checksum: a8193132d84540e4dc1895ecc8dbaa176e8a49d26084d6fbe48a292e28397cd19ec5d13bc13e604484e76f94f6e334b2bdc740d5f06a6e50c44072818d0c19f9
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^3.0.0":
   version: 3.0.0
   resolution: "unique-filename@npm:3.0.0"
@@ -5372,7 +5398,7 @@ __metadata:
   dependencies:
     "@actions/core": ^1.10.0
     "@actions/exec": ^1.1.1
-    "@actions/http-client": ^2.1.1
+    "@actions/http-client": ^2.2.2
     "@actions/tool-cache": ^2.0.1
     "@types/node": ^20.6.0
     "@typescript-eslint/eslint-plugin": ^6.6.0
