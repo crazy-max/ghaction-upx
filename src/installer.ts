@@ -63,11 +63,30 @@ export async function getUPX(version: string): Promise<string> {
 }
 
 function getName(version: string): string {
-  let platform = '';
-  if (osPlat == 'win32') {
-    platform = osArch == 'x64' ? 'win64' : 'win32';
-  } else if (osPlat == 'linux') {
-    platform = osArch == 'x64' ? 'amd64_linux' : 'i386_linux';
+  let platform: string;
+  switch (osArch) {
+    case 'x64': {
+      platform = osPlat === 'win32' ? 'win64' : 'amd64_' + osPlat;
+      break;
+    }
+    case 'x32': {
+      platform = osPlat === 'win32' ? 'win32' : 'i386_' + osPlat;
+      break;
+    }
+    case 'arm': {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const arm_version = (process.config.variables as any).arm_version;
+      if (arm_version === '7') {
+        platform = 'armeb_' + osPlat;
+      } else {
+        platform = 'arm_' + osPlat;
+      }
+      break;
+    }
+    default: {
+      platform = osArch + '_' + osPlat;
+      break;
+    }
   }
   return util.format('upx-%s-%s', version, platform);
 }
