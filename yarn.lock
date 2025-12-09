@@ -22,6 +22,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@actions/core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@actions/core@npm:2.0.0"
+  dependencies:
+    "@actions/exec": ^1.1.1
+    "@actions/http-client": ^3.0.0
+  checksum: 65276636dea88739fb104f0fd87b6aa075fb25ccd3d4ece595a23dc05d889c3633614d8d65c5a052642f51b6a4ac879727642309a6c1d6088392f98964a84c40
+  languageName: node
+  linkType: hard
+
 "@actions/exec@npm:^1.0.0, @actions/exec@npm:^1.1.1":
   version: 1.1.1
   resolution: "@actions/exec@npm:1.1.1"
@@ -47,6 +57,16 @@ __metadata:
     tunnel: ^0.0.6
     undici: ^5.25.4
   checksum: 5d395df575d30ae599efa10dd715e72944b015e753db61f0a823f737acbb0e99743d4a9f25e812b18ec8cc34f86c73565d075c449e01ffa891577b6595212dde
+  languageName: node
+  linkType: hard
+
+"@actions/http-client@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@actions/http-client@npm:3.0.0"
+  dependencies:
+    tunnel: ^0.0.6
+    undici: ^5.28.5
+  checksum: 840ec7a4c224a3945d1958b56b01fb870ae19c1d1502b8f0d1a7c291bbe061aff50b6c3bbf6c09b6afa3b56386ec09ecd16029c6fcb3016fb9e21cd1ab5f49fc
   languageName: node
   linkType: hard
 
@@ -5343,7 +5363,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.25.4":
+"undici@npm:^5.25.4, undici@npm:^5.28.5":
   version: 5.29.0
   resolution: "undici@npm:5.29.0"
   dependencies:
@@ -5395,7 +5415,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "upx-github-action@workspace:."
   dependencies:
-    "@actions/core": ^1.11.1
+    "@actions/core": ^2.0.0
     "@actions/exec": ^1.1.1
     "@actions/http-client": ^2.2.3
     "@actions/tool-cache": ^2.0.2
