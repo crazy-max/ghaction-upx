@@ -1,6 +1,7 @@
-import {describe, expect, it} from '@jest/globals';
+import {describe, expect, it} from 'vitest';
 import * as fs from 'fs';
-import * as installer from '../src/installer';
+
+import * as installer from '../src/installer.js';
 
 describe('getRelease', () => {
   it('returns latest UPX GitHub release', async () => {
@@ -17,8 +18,8 @@ describe('getRelease', () => {
     expect(release?.html_url).toEqual('https://github.com/upx/upx/releases/tag/v3.95');
   });
 
-  it('unknown release', async () => {
-    await expect(installer.getRelease('foo')).rejects.toThrow(
+  it('unknown release', () => {
+    return expect(installer.getRelease('foo')).rejects.toThrow(
       new Error(
         'Cannot find UPX release foo in https://raw.githubusercontent.com/crazy-max/ghaction-upx/master/.github/upx-releases.json'
       )

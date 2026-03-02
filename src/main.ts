@@ -1,9 +1,10 @@
 import * as os from 'os';
 import * as path from 'path';
-import * as context from './context';
-import * as installer from './installer';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
+
+import * as context from './context.js';
+import * as installer from './installer.js';
 
 async function run(): Promise<void> {
   try {
