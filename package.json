@@ -26,7 +26,7 @@
     "@actions/exec": "^3.0.0",
     "@actions/http-client": "^4.0.0",
     "@actions/tool-cache": "^4.0.0",
-    "glob": "^11.1.0"
+    "glob": "^13.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
