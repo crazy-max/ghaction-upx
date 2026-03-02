@@ -1,7 +1,8 @@
-import {describe, expect, it} from '@jest/globals';
-import * as context from '../src/context';
-import * as core from '@actions/core';
+import {describe, expect, it} from 'vitest';
 import * as path from 'path';
+import * as core from '@actions/core';
+
+import * as context from '../src/context';
 
 describe('getInputList', () => {
   it('handles single line correctly', async () => {
