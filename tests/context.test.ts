@@ -2,60 +2,52 @@ import {describe, expect, it} from 'vitest';
 import * as path from 'path';
 import * as core from '@actions/core';
 
-import * as context from '../src/context';
+import * as context from '../src/context.js';
 
 describe('getInputList', () => {
   it('handles single line correctly', async () => {
-    await setInput('foo', 'bar');
-    const res = await context.getInputList(core.getInput('foo'));
+    setInput('foo', 'bar');
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar']);
   });
-
   it('handles multiple lines correctly', async () => {
     setInput('foo', 'bar\nbaz');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz']);
   });
-
   it('remove empty lines correctly', async () => {
     setInput('foo', 'bar\n\nbaz');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz']);
   });
-
   it('handles comma correctly', async () => {
     setInput('foo', 'bar,baz');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz']);
   });
-
   it('remove empty result correctly', async () => {
     setInput('foo', 'bar,baz,');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz']);
   });
-
   it('handles different new lines correctly', async () => {
     setInput('foo', 'bar\r\nbaz');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz']);
   });
-
   it('handles different new lines and comma correctly', async () => {
     setInput('foo', 'bar\r\nbaz,bat');
-    const res = await context.getInputList(core.getInput('foo'));
+    const res = context.getInputList(core.getInput('foo'));
     expect(res).toEqual(['bar', 'baz', 'bat']);
   });
-
   it('handles multiple lines and ignoring comma correctly', async () => {
     setInput('files', './bin/binary.exe\n./bin/binary2.exe');
-    const res = await context.getInputList(core.getInput('files'), true);
+    const res = context.getInputList(core.getInput('files'), true);
     expect(res).toEqual(['./bin/binary.exe', './bin/binary2.exe']);
   });
-
   it('handles different new lines and ignoring comma correctly', async () => {
     setInput('driver-opts', './bin/binary.exe\r\n./bin/binary2.exe');
-    const res = await context.getInputList(core.getInput('files'), true);
+    const res = context.getInputList(core.getInput('files'), true);
     expect(res).toEqual(['./bin/binary.exe', './bin/binary2.exe']);
   });
 });
@@ -64,11 +56,9 @@ describe('asyncForEach', () => {
   it('executes async tasks sequentially', async () => {
     const testValues = [1, 2, 3, 4, 5];
     const results: number[] = [];
-
     await context.asyncForEach(testValues, async value => {
       results.push(value);
     });
-
     expect(results).toEqual(testValues);
   });
 });

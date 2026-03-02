@@ -1,5 +1,5 @@
-import * as glob from 'glob';
 import {lstatSync} from 'fs';
+import * as glob from 'glob';
 import * as core from '@actions/core';
 
 export interface Inputs {
