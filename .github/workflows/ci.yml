@@ -4,7 +4,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 permissions:
   contents: read
 
@@ -18,8 +17,6 @@ on:
     tags:
       - 'v*'
   pull_request:
-    paths-ignore:
-      - '.github/upx-releases.json'
 
 jobs:
   ci:
@@ -36,7 +33,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       -
         name: Download files
         shell: bash
@@ -73,7 +70,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       -
         name: UPX
         uses: ./
