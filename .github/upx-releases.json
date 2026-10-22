@@ -1,23 +1,44 @@
 {
   "latest": {
-    "id": 335996156,
-    "tag_name": "v5.2.0",
-    "html_url": "https://github.com/upx/upx/releases/tag/v5.2.0",
+    "id": 377853905,
+    "tag_name": "v5.2.1",
+    "html_url": "https://github.com/upx/upx/releases/tag/v5.2.1",
     "assets": [
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-amd64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-arm64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-arm_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-armeb_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-dos.zip",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-i386_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-mips_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-mipsel_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-powerpc64le_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-powerpc_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-riscv64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-src.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-win32.zip",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-win64.zip"
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-amd64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-armeb_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-dos.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-i386_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mips_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mipsel_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc64le_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-riscv64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-src.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win32.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win64.zip"
+    ]
+  },
+  "v5.2.1": {
+    "id": 377853905,
+    "tag_name": "v5.2.1",
+    "html_url": "https://github.com/upx/upx/releases/tag/v5.2.1",
+    "assets": [
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-amd64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-armeb_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-dos.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-i386_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mips_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mipsel_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc64le_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-riscv64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-src.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win32.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win64.zip"
     ]
   },
   "v5.2.0": {
@@ -324,24 +345,24 @@
     ]
   },
   "edge": {
-    "id": 335996156,
-    "tag_name": "v5.2.0",
-    "html_url": "https://github.com/upx/upx/releases/tag/v5.2.0",
+    "id": 377853905,
+    "tag_name": "v5.2.1",
+    "html_url": "https://github.com/upx/upx/releases/tag/v5.2.1",
     "assets": [
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-amd64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-arm64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-arm_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-armeb_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-dos.zip",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-i386_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-mips_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-mipsel_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-powerpc64le_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-powerpc_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-riscv64_linux.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-src.tar.xz",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-win32.zip",
-      "https://github.com/upx/upx/releases/download/v5.2.0/upx-5.2.0-win64.zip"
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-amd64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-arm_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-armeb_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-dos.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-i386_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mips_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-mipsel_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc64le_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-powerpc_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-riscv64_linux.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-src.tar.xz",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win32.zip",
+      "https://github.com/upx/upx/releases/download/v5.2.1/upx-5.2.1-win64.zip"
     ]
   },
   "v3.99": {
